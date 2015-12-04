@@ -1,0 +1,13 @@
+web:
+  build: .
+  links:
+   - db:db
+  ports:
+   - "8000:8000"
+  volumes:
+   - .:/usr/src/app:z
+db:
+  image: mdillon/postgis
+  environment:
+   - POSTGRES_PASSWORD=geert
+
