@@ -1,5 +1,14 @@
 from django.contrib.gis import admin
-from .models import WorldBorder, Marker
+from geo import models
 
-admin.site.register(WorldBorder, admin.GeoModelAdmin)
-admin.site.register(Marker, admin.GeoModelAdmin)
+
+class WorldBorderAdmin(admin.GeoModelAdmin):
+    list_display = ('name', 'pop2005', 'fips', 'iso2', 'iso3', 'lon', 'lat')
+
+
+admin.site.register(models.WorldBorder, WorldBorderAdmin)
+admin.site.register(models.Marker, admin.GeoModelAdmin)
+admin.site.register(models.Municipality, admin.GeoModelAdmin)
+admin.site.register(models.MunicipalityOwner, admin.GeoModelAdmin)
+admin.site.register(models.Game, admin.GeoModelAdmin)
+admin.site.register(models.RiskProfile, admin.GeoModelAdmin)

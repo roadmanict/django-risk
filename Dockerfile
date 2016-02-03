@@ -1,7 +1,9 @@
 FROM python
 
 RUN apt-get update && \
-    apt-get install --no-install-recommends -y binutils libproj-dev gdal-bin
+    apt-get install --no-install-recommends -y \
+    	binutils libproj-dev gdal-bin && \
+    apt-get clean
 
 ENV APP_DIR /usr/src/app
 
@@ -16,4 +18,3 @@ WORKDIR /usr/src/app
 EXPOSE 8000
 
 CMD ["python", "geodjango/manage.py", "runserver", "0.0.0.0:8000"]
-
